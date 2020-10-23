@@ -1,12 +1,24 @@
-<aura:component>
+<aura:component controller="BoatSearchFormApexController">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:attribute
+    name="boatTypes"
+    type="String[]"
+    default="['No types matched']"
+  />
+  <aura:attribute
+    name="isCreateRecordSupported"
+    type="Boolean"
+    default="false"
+  />
+
   <div class="c-container">
     <lightning:layout horizontalAlign="center">
       <lightning:layoutItem>
         <lightning:select title="Select a filter">
           <option value="">All Types</option>
-          <option>Option One</option>
-          <option>Option Two</option>
-          <option>Option Three</option>
+          <aura:iteration items="{!v.boatTypes}" var="type">
+            <option value="{!type}" text="{!type}"></option>
+          </aura:iteration>
         </lightning:select>
       </lightning:layoutItem>
       <lightning:layoutItem padding="around-small">
@@ -18,9 +30,12 @@
           />
         </div>
       </lightning:layoutItem>
+
       <lightning:layoutItem padding="around-small">
         <div>
-          <lightning:button label="New" title="New Boat" />
+          <aura:if isTrue="{!v.isCreateRecordSupported}">
+            <lightning:button label="New" title="New Boat" />
+          </aura:if>
         </div>
       </lightning:layoutItem>
     </lightning:layout>
