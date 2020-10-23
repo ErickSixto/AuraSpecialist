@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+  <lightning:card
+    class="search-boat-container"
+    title="Find a Boat"
+    iconName="standard:search"
+  >
+    <c:BoatSearchForm />
+  </lightning:card>
+
+  <lightning:card title="Matching Boats">
+    <c:BoatSearchResults />
+  </lightning:card>
+</aura:component>

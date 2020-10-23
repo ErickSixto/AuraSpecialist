@@ -1,0 +1,28 @@
+<aura:component>
+  <div class="c-container">
+    <lightning:layout horizontalAlign="center">
+      <lightning:layoutItem>
+        <lightning:select title="Select a filter">
+          <option value="">All Types</option>
+          <option>Option One</option>
+          <option>Option Two</option>
+          <option>Option Three</option>
+        </lightning:select>
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="around-small">
+        <div>
+          <lightning:button
+            variant="brand"
+            label="Search"
+            title="Search action"
+          />
+        </div>
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="around-small">
+        <div>
+          <lightning:button label="New" title="New Boat" />
+        </div>
+      </lightning:layoutItem>
+    </lightning:layout>
+  </div>
+</aura:component>
