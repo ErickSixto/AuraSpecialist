@@ -2,7 +2,7 @@
   doInit: function (component) {
     var action = component.get("c.getBoatTypes");
 
-    var createRecordEvent = $A.get("e.force:createRecord");
+    var createRecordEvent = $A.get("event.force:createRecord");
 
     if (createRecordEvent) {
       component.set("v.isCreateRecordSupported", true);
@@ -20,5 +20,26 @@
       }
     });
     $A.enqueueAction(action);
+  },
+
+  boatTypeChange: function (component, event) {
+    var boatType = event.getSource().get("v.value");
+
+    component.set("v.boatType", boatType);
+  },
+
+  newBtnClick: function (component) {
+    var createRecordEvent = $A.get("event.force.createRecord");
+
+    if (createRecordEvent) {
+      var params = { entityApiName: "Boat__c" };
+
+      var boatType = component.get("v.boatType");
+
+      if (boatType) {
+        params.defaultFieldValues = { BoatType__c: boatType };
+        createRecordEvent.fire();
+      }
+    }
   }
 });

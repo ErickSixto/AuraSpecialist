@@ -1,4 +1,4 @@
-<aura:application>
+<aura:application extends="force:slds">
   <lightning:layout>
     <lightning:layoutItem size="8">
       <lightning:card title="Find a Boat" iconName="standard:search">

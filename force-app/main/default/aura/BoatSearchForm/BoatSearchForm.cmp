@@ -5,6 +5,7 @@
     type="String[]"
     default="['No types matched']"
   />
+  <aura:attribute name="boatType" type="String" default="" />
   <aura:attribute
     name="isCreateRecordSupported"
     type="Boolean"
@@ -12,14 +13,20 @@
   />
 
   <div class="c-container">
-    <lightning:layout horizontalAlign="center">
-      <lightning:layoutItem>
-        <lightning:select title="Select a filter">
-          <option value="">All Types</option>
-          <aura:iteration items="{!v.boatTypes}" var="type">
-            <option value="{!type}" text="{!type}"></option>
-          </aura:iteration>
-        </lightning:select>
+    <lightning:layout horizontalAlign="center" verticalAlign="center">
+      <lightning:layoutItem padding="around-small">
+        <div class="slds-form-element">
+          <div class="slds-form-element__control">
+            <div class="slds-select_container">
+              <select class="slds-select" onChange="{!c.boatTypeChange}">
+                <option value="">All Types</option>
+                <aura:iteration items="{!v.boatTypes}" var="type">
+                  <option value="{!type}" text="{!type}" />
+                </aura:iteration>
+              </select>
+            </div>
+          </div>
+        </div>
       </lightning:layoutItem>
       <lightning:layoutItem padding="around-small">
         <div>
