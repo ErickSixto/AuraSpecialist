@@ -7,7 +7,9 @@
     <aura:iteration items="{!v.boats}" var="currentBoat">
       <lightning:layoutItem
         size="12"
-        mediumDeviceSize="3"
+        largeDeviceSize="3"
+        mediumDeviceSize="4"
+        smallDeviceSize="12"
         padding="around-small"
       >
         <c:BoatTile boat="{!currentBoat}" />

@@ -28,6 +28,16 @@
     component.set("v.boatType", boatType);
   },
 
+  onFormSubmit: function (component) {
+    var boatTypeId = component.get("v.boatType");
+    var params = { formData: { boatTypeId: boatTypeId } };
+
+    var formSubmit = component.getEvent("formsubmit");
+
+    formSubmit.setParams(params);
+    formSubmit.fire();
+  },
+
   newBtnClick: function (component) {
     var createRecordEvent = $A.get("event.force.createRecord");
 

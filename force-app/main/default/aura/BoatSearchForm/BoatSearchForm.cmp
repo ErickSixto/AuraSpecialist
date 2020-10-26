@@ -1,5 +1,7 @@
 <aura:component controller="BoatSearchFormApexController">
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <aura:registerEvent name="formsubmit" type="c:FormSubmit" />
+
   <aura:attribute
     name="boatTypes"
     type="String[]"
@@ -34,6 +36,7 @@
             variant="brand"
             label="Search"
             title="Search action"
+            onclick="{!c.onFormSubmit}"
           />
         </div>
       </lightning:layoutItem>

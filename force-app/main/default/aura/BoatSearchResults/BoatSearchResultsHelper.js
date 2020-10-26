@@ -13,8 +13,6 @@
         var boats = response.getReturnValue();
 
         component.set("v.boats", boats);
-      } else {
-        console.log("ERROR");
       }
     });
     $A.enqueueAction(action);
