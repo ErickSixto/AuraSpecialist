@@ -1,2 +1,3 @@
-.THIS {
+.THIS .label-hidden > label {
+  display: none;
 }

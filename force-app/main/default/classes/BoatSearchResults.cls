@@ -3,9 +3,9 @@ public with sharing class BoatSearchResults {
   public static List<Boat__c> getBoats(String boatTypeId) {
     Boat__c[] boats = new List<Boat__c>();
     try {
-      if (boatTypeId.length() > 0) {
+      if (boatTypeId != null && boatTypeId.length() > 0) {
         boats = [
-          SELECT BoatType__c, Id, Name, Picture__c
+          SELECT Id, Name, Picture__c
           FROM Boat__c
           WHERE BoatType__c = :boatTypeId
           WITH SECURITY_ENFORCED
@@ -13,7 +13,7 @@ public with sharing class BoatSearchResults {
         ];
       } else {
         boats = [
-          SELECT BoatType__c, Id, Name, Picture__c
+          SELECT Id, Name, Picture__c
           FROM Boat__c
           WITH SECURITY_ENFORCED
           ORDER BY Name ASC

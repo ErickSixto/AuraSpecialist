@@ -23,9 +23,9 @@
   },
 
   boatTypeChange: function (component, event) {
-    var boatType = event.getSource().get("v.value");
+    var selectedItem = event.getSource().get("v.value");
 
-    component.set("v.boatType", boatType);
+    component.set("v.boatType", selectedItem);
   },
 
   onFormSubmit: function (component) {

@@ -1,13 +1,10 @@
 public with sharing class BoatSearchFormApexController {
-  
-    @AuraEnabled
-    public static String[] getBoatTypes(){
-        String[] boatTypeNames = new List<String>();
-   
-        BoatType__c[] boatTypes = [SELECT Name FROM BoatType__c];
-        for(BoatType__c boatType: boatTypes){
-            boatTypeNames.add(boatType.Name);
-        }
-        return boatTypeNames;
-    }
+  @AuraEnabled
+  public static BoatType__c[] getBoatTypes() {
+    BoatType__c[] boatTypes = new List<BoatType__c>();
+
+    boatTypes = [SELECT Id, Name FROM BoatType__c];
+
+    return boatTypes;
+  }
 }
