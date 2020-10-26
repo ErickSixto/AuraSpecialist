@@ -1,5 +1,13 @@
 ({
-  myAction: function (component, event, helper) {},
+  onBoatClick: function (component) {
+    var boat = component.get("v.boat");
 
-  onBoatClick: function (component, event, helper) {}
+    if (boat && boat.Id) {
+      var boatselect = component.getEvent("boatselect");
+
+      boatselect.setParams({ boatId: boat.Id });
+
+      boatselect.fire();
+    }
+  }
 });

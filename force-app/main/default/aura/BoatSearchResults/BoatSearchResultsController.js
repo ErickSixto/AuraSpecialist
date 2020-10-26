@@ -10,5 +10,10 @@
       component.set("v.boatTypeId", params.boatTypeId);
       helper.onSearch(component, event, helper);
     }
+  },
+  onBoatSelect: function (component, event) {
+    var boatId = event.getParam("boatId");
+
+    component.set("v.selectedBoatId", boatId);
   }
 });

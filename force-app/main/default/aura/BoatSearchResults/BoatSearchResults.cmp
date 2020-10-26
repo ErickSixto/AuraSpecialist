@@ -1,7 +1,15 @@
 <aura:component controller="BoatSearchResults">
   <aura:attribute name="boats" type="Boat__c[]" default="" />
   <aura:attribute name="boatTypeId" type="String" default="" />
+  <aura:attribute name="selectedBoatId" type="String" default="" />
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:handler
+    name="boatselect"
+    event="c:boatselect"
+    action="{!c.onBoatSelect}"
+  />
+
   <aura:method
     name="search"
     action="{!c.doSearch}"
@@ -11,7 +19,7 @@
   </aura:method>
 
   <lightning:layout multipleRows="true">
-    <aura:iteration items="{!v.boats}" var="currentBoat">
+    <aura:iteration items="{!v.boats}" var="boat">
       <lightning:layoutItem
         size="12"
         largeDeviceSize="3"
@@ -19,7 +27,10 @@
         smallDeviceSize="12"
         padding="around-small"
       >
-        <c:BoatTile boat="{!currentBoat}" />
+        <c:BoatTile
+          boat="{!boat}"
+          selected="{!(boat.Id == v.selectedBoatId) ? true : false}"
+        />
       </lightning:layoutItem>
     </aura:iteration>
 
