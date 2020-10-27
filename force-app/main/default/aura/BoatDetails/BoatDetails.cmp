@@ -10,14 +10,32 @@
   <aura:attribute name="boat" type="Boat__c" />
   <aura:attribute name="id" type="Id" default="" />
   <aura:handler event="c:boatselected" action="{!c.onBoatSelected}" />
+  <aura:handler
+    name="BoatReviewAdded"
+    event="c:BoatReviewAdded"
+    action="{!c.onBoatReviewAdded}"
+  />
 
   <lightning:card>
     <aura:if isTrue="{!!empty(v.boat)}">
-      <lightning:tabset>
-        <lightning:tab label="Details" title="Details"> Details </lightning:tab>
-        <lightning:tab label="Review" title="Review"> Review </lightning:tab>
-        <lightning:tab label="Add Review"> Add Review</lightning:tab>
+      <lightning:tabset aura:id="tabs" class="slds-card">
+        <lightning:tab label="Details" title="Details">
+          <c:BoatDetail boat="{!v.boat}" />
+        </lightning:tab>
+        <lightning:tab id="boatreviewtab" label="Reviews" title="Reviews">
+          Reviews
+        </lightning:tab>
+        <lightning:tab label="Add Review">
+          <c:AddBoatReview boat="{!v.boat}"
+        /></lightning:tab>
       </lightning:tabset>
+      <aura:set attribute="else">
+        <h1>
+          <lightning:formattedText
+            >No boat to display! Select a boat to see its details
+          </lightning:formattedText>
+        </h1>
+      </aura:set>
     </aura:if>
   </lightning:card>
 </aura:component>

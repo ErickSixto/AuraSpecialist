@@ -1,6 +1,7 @@
 <aura:component>
   <aura:attribute name="boat" type="Boat__c" />
   <aura:attribute name="showFullDetailsBtn" type="Boolean" default="false" />
+  <aura:dependency resource="markup://force:navigateToSObject" type="EVENT" />
 
   <lightning:card iconName="utility:anchor">
     <aura:set attribute="actions">
@@ -14,23 +15,38 @@
         <div class="slds-p-horizontal--small">
           <div class="boatproperty">
             <span class="label">Boat Name:</span>
-            <span></span>
+            <span>{! v.boat.Name }</span>
           </div>
           <div class="boatproperty">
             <span class="label">Type:</span>
-            <span></span>
+            <span>{! v.boat.BoatType__r.Name }</span>
           </div>
           <div class="boatproperty">
             <span class="label">Length:</span>
-            <span> ft</span>
+            <span>{! v.boat.Length__c } ft</span>
           </div>
           <div class="boatproperty">
             <span class="label">Est. Price:</span>
-            <span></span>
+            <lightning:formattedNumber
+              value="{! v.boat.Price__c }"
+              style="currency"
+              currencyCode="USD"
+            />
+          </div>
+          <div class="boatproperty">
+            <span class="label">Est. Price:</span>
+            <span
+              ><lightning:formattedNumber
+                value="{! v.boat.Price__c }"
+                style="currency"
+                currencyCode="USD"
+            /></span>
           </div>
           <div class="boatproperty">
             <span class="label">Description:</span>
-            <span></span>
+            <span>
+              <lightning:formattedRichText value="{! v.boat.Description__c }"
+            /></span>
           </div>
         </div>
       </lightning:layoutItem>
