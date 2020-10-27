@@ -3,11 +3,15 @@
     var boat = component.get("v.boat");
 
     if (boat && boat.Id) {
-      var boatselect = component.getEvent("boatselect");
+      var boatSelect = component.getEvent("boatselect");
 
-      boatselect.setParams({ boatId: boat.Id });
+      boatSelect.setParams({ boatId: boat.Id });
+      boatSelect.fire();
 
-      boatselect.fire();
+      var boatSelected = $A.get("e.c:boatselected");
+
+      boatSelected.setParams({ boat: boat });
+      boatSelected.fire();
     }
   }
 });

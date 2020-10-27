@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+  <force:recordData
+    aura:id="service"
+    recordId="{!v.id}"
+    fields="Id,Name,Description__c,Price__c,Length__c,Contact__r.Name,Contact__r.Email,Contact__r.HomePhone,BoatType__r.Name,Picture__c"
+    targetFields="{!v.boat}"
+    recordUpdated="{!c.onRecordUpdated}"
+  />
+
+  <aura:attribute name="boat" type="Boat__c" />
+  <aura:attribute name="id" type="Id" default="" />
+  <aura:handler event="c:boatselected" action="{!c.onBoatSelected}" />
+
+  <lightning:card>
+    <aura:if isTrue="{!!empty(v.boat)}">
+      <lightning:tabset>
+        <lightning:tab label="Details" title="Details"> Details </lightning:tab>
+        <lightning:tab label="Review" title="Review"> Review </lightning:tab>
+        <lightning:tab label="Add Review"> Add Review</lightning:tab>
+      </lightning:tabset>
+    </aura:if>
+  </lightning:card>
+</aura:component>
