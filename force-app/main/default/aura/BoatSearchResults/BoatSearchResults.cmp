@@ -6,7 +6,7 @@
 
   <aura:handler
     name="boatselect"
-    event="c:boatselect"
+    event="c:BoatSelect"
     action="{!c.onBoatSelect}"
   />
 

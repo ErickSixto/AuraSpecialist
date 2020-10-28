@@ -9,7 +9,7 @@
 
   <aura:attribute name="boat" type="Boat__c" />
   <aura:attribute name="id" type="Id" default="" />
-  <aura:handler event="c:boatselected" action="{!c.onBoatSelected}" />
+  <aura:handler event="c:BoatSelected" action="{!c.onBoatSelected}" />
   <aura:handler
     name="BoatReviewAdded"
     event="c:BoatReviewAdded"

@@ -5,7 +5,7 @@ public with sharing class BoatSearchResults {
     try {
       if (boatTypeId != null && boatTypeId.length() > 0) {
         boats = [
-          SELECT Id, Name, Picture__c
+          SELECT Id, Name, Picture__c, Geolocation__latitude__s, Geolocation__longitude__s
           FROM Boat__c
           WHERE BoatType__c = :boatTypeId
           WITH SECURITY_ENFORCED
@@ -13,7 +13,7 @@ public with sharing class BoatSearchResults {
         ];
       } else {
         boats = [
-          SELECT Id, Name, Picture__c
+          SELECT Id, Name, Picture__c, Geolocation__latitude__s, Geolocation__longitude__s
           FROM Boat__c
           WITH SECURITY_ENFORCED
           ORDER BY Name ASC
