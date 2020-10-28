@@ -16,7 +16,7 @@ public with sharing class BoatReviews {
           Rating__c
         FROM BoatReview__c
         WHERE Boat__c = :boatId
-        ORDER BY CreatedDate ASC
+        ORDER BY CreatedDate DESC
       ];
       return boatReviews;
     } catch (Exception e) {

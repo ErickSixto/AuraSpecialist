@@ -30,6 +30,9 @@
       />
     </lightning:layoutItem>
     <lightning:layoutItem size="12" padding="around-small">
+      <c:FiveStarRating value="{!v.boatReview.Rating__c}" />
+    </lightning:layoutItem>
+    <lightning:layoutItem size="12" padding="around-small">
       <div class="slds-align_absolute-center">
         <lightning:button
           label="Submit"
@@ -43,4 +46,9 @@
       </div>
     </lightning:layoutItem>
   </lightning:layout>
+
+  <!-- Display Lightning Data Service errors -->
+  <aura:if isTrue="{!not(empty(v.recordError))}">
+    <div class="recordError">{!v.recordError}</div>
+  </aura:if>
 </aura:component>
